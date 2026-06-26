@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Appointment - Health Hub</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:#E6F7FF;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    background:white;
+    width:500px;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#023e8a;
+    margin-bottom:20px;
+}
+
+label{
+    font-weight:bold;
+    color:#023e8a;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.confirm-btn{
+    background:#0077b6;
+    color:white;
+}
+
+.confirm-btn:hover{
+    background:#023e8a;
+}
+
+.back-btn{
+    background:#28a745;
+    color:white;
+    margin-top:10px;
+}
+
+.back-btn:hover{
+    background:#1f7a34;
+}
+
+.info-box{
+    background:#f0f8ff;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📅 Book Appointment</h2>
+
+<form id="appointmentForm">
+
+<label>Patient Name</label>
+<input type="text"
+id="patientName"
+name="name"
+readonly
+required>
+
+<label>Select Doctor</label>
+
+<select name="doctor" id="doctor" required>
+
+<option value="">Select Doctor</option>
+
+<option>Dr. Sharma</option>
+
+<option>Dr. Patil</option>
+
+<option>Dr. Kulkarni</option>
+
+<option>Dr. Deshmukh</option>
+
+</select>
+
+<label>Doctor Specialization</label>
+<input type="text" id="specialization" readonly>
+
+<label>Consultation Fees</label>
+<input type="text" id="fees" readonly>
+
+<label>Select Hospital</label>
+
+<select name="hospital" required>
+
+<option value="">Select Hospital</option>
+
+<option>Apex Multispeciality Hospital</option>
+
+<option>Omkar Hospital</option>
+
+<option>Ekatpure Hospital</option>
+
+<option>Sub District Hospital Akluj</option>
+
+</select>
+
+<label>Appointment Date</label>
+<input type="date" name="date" required>
+
+<label>Available Time Slots</label>
+
+<select name="time" required>
+
+<option value="">Select Time Slot</option>
+
+<option>09:00 AM</option>
+
+<option>10:00 AM</option>
+
+<option>11:00 AM</option>
+
+<option>12:00 PM</option>
+
+<option>02:00 PM</option>
+
+<option>03:00 PM</option>
+
+<option>04:00 PM</option>
+
+</select>
+
+<label>Symptoms / Problem</label>
+
+<textarea
+name="symptoms"
+rows="4"
+placeholder="Describe your symptoms..."
+required>
+</textarea>
+
+<div class="info-box">
+
+<b>Note:</b>
+
+After confirmation, Appointment ID and Token Number
+will be generated automatically.
+
+</div>
+
+<button type="submit" class="confirm-btn">
+Confirm Appointment
+</button>
+
+<button
+type="button"
+class="back-btn"
+onclick="window.location.href='Patient.html'">
+
+Back To Dashboard
+
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+/* Auto Patient Name */
+
+document.getElementById("patientName").value =
+localStorage.getItem("name") || "Patient";
+
+/* Doctor Details */
+
+document.getElementById("doctor")
+.addEventListener("change",function(){
+
+let doctor=this.value;
+
+let specialization=
+document.getElementById("specialization");
+
+let fees=
+document.getElementById("fees");
+
+if(doctor==="Dr. Sharma"){
+
+specialization.value="Cardiologist";
+fees.value="₹500";
+
+}
+
+else if(doctor==="Dr. Patil"){
+
+specialization.value="Neurologist";
+fees.value="₹600";
+
+}
+
+else if(doctor==="Dr. Kulkarni"){
+
+specialization.value="Orthopedic";
+fees.value="₹450";
+
+}
+
+else if(doctor==="Dr. Deshmukh"){
+
+specialization.value="General Physician";
+fees.value="₹300";
+
+}
+
+});
+
+/* Appointment Submit */
+
+document.getElementById("appointmentForm")
+.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let appointmentId =
+"APT" + Math.floor(Math.random()*10000);
+
+let token =
+Math.floor(Math.random()*100)+1;
+
+alert(
+
+"✅ Appointment Confirmed Successfully!\n\n" +
+
+"Appointment ID : " + appointmentId +
+
+"\nToken Number : " + token +
+
+"\n\n🔔 Doctor Notification Sent Successfully."
+
+);
+
+/* Future Servlet + Database Integration */
+
+window.location.href="AppointmentHistory.html";
+
+});
+
+</script>
+
+</body>
+</html>

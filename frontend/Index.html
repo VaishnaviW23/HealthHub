@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            /*background-color: #b4eaf4;*/ /* हल्का ब्लू बैकग्राउंड */
+            color: #023e8a; /* डार्क ब्लू टेक्स्ट */
+        
+            background:#E6F7FF;
+
+        }
+        nav {
+            background: #0077b6; /* गहरा नीला नैव */
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav button {
+            background: white;
+            color: #0077b6;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .hero {
+            text-align: center;
+            padding: 70px 100px;
+            background: linear-gradient(120deg, #00b4d8, #00c9f0); /* ब्लू ग्रेडियंट */
+            color: white;
+        }
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 20px;
+        }
+        /*.logo {
+            font-size: 24px;
+            font-weight: bold;
+        }*/
+        .logo{
+display:flex;
+align-items:center;
+font-size:30px;
+font-weight:bold;
+gap:10px;
+}
+
+.logo img{
+width:70px;
+height:70px;
+border-radius:50%;
+}
+        .container {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }.card{
+background:white;padding: 20px;
+border-radius:8px;box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+        /*.card {
+            background: rgb(251, 252, 252);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }*/
+        .card h3 {
+            color: #023e8a;
+            margin-bottom: 10px;
+        }
+        .card p {
+            margin: 5px 0;
+        }
+        .card button {
+            background: #023e8a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        #chatbot-icon{
+           position:fixed;
+           bottom:20px;
+           right:20px;
+           background:#0a7cff;
+           color:white;
+           width:60px;
+           height:60px;
+           border-radius:50%;
+           display: flex;
+           align-items:center;
+           justify-content:center;
+           font-size:25px;
+           cursor:pointer;
+           box-shadow:0 4px 10px rgba(0,0,0,0.3);
+           z-index:1000;
+        }
+        /* Emergency Button */
+
+#emergency-btn{
+position:fixed;
+bottom:20px;
+left:20px;
+background:red;
+color:white;
+width:90px;
+height:90px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+cursor:pointer;
+box-shadow:0 4px 15px rgba(0,0,0,0.4);
+z-index:9999;
+}
+
+#emergency-btn:hover{
+background:darkred;
+}
+.hero-btn{
+    background:white;
+    color:#0077b6;
+    border:none;
+    padding:12px 25px;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.hero-btn:hover{
+    background:#023e8a;
+    color:white;
+}
+footer{
+background:#0077b6;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:30px;
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <!---<div class="logo">Health Hub</div>--->
+        <div class="logo">
+           <img src="HealthHubLogo.jpeg" alt="Health Hub Logo">
+           <span>Health Hub</span>
+        </div>
+         <div>
+      <a href="AboutUs.html"><button>About Us</button></a>
+      <a href="ContactUs.html"><button>Contact Us</button> </a>
+      <a href="login.html"><button>Login</button>
+      </a>
+   </div>
+    </nav>
+   <section class="hero">
+    <h2>Welcome to Health Hub</h2>
+
+    <h3><b>Your Health, Our Priority ❤️</b></h3>
+
+    <p>
+        Book Appointments • Access Health Records •
+        Get Emergency Help • Connect with Doctors
+    </p>
+
+    <a href="login.html">
+        <button class="hero-btn">Get Started</button>
+    </a>
+</section>
+    <div class="container">
+        <h3>Hospitals in Akluj</h3>
+        <div class="cards">
+            <div class="card">
+                <h3>Apex Multispeciality Hospital</h3>
+                <p>📞 8975814545</p>
+                <p>📍 100 Feet Bypass Road, Akluj</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Apex+Multispeciality+Hospital+Akluj" target="_blank">
+                <button >View Map</button>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Omkar Hospital</h3>
+                <p>📞 02185 223889</p>
+                <p>📍 Sumitra Nagar, Akluj</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Omkar+Hospital+Akluj" target="_blank">
+                    <button>View Map</button>
+                </a>
+
+            </div>
+            <div class="card">
+                <h3>Sub District Hospital Akluj</h3>
+                <p>📞 02185-227070</p>
+                <p>📍 Tal Malshiras, Dist Solapur</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sub+District+Hospital+Akluj" target="_blank">
+                    <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Ekatpure Hospital</h3>
+                <p>📞 02185222206</p>
+                <p>📍 Akluj, Maharashtra</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ekatpure+Hospital+Akluj" target="_blank">
+                   <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Sub District Hospital Akluj</h3>
+                <p>📞 02185-227070</p>
+                <p>📍 Tal Malshiras, Dist Solapur</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sub+District+Hospital+Akluj" target="_blank">
+                    <button>View Map</button>
+                </a>
+                
+            </div>
+            <div class="card">
+                <h3>Ravindra Hospital</h3>
+                <p>📞 02185 224455</p>
+                <p>📍 MG Road, Akluj</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Ravindra+Hospital+Akluj" target="_blank">
+                   <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+               <h3>City Care Clinic</h3>
+               <p>📞 02185 226677</p>
+               <p>📍 Gandhi Chowk, Akluj</p>
+               <a href="https://www.google.com/maps/search/?api=1&query=City+Care+Clinic+Akluj" target="_blank">
+                    <button>View Map</button>
+                </a>
+            </div>  
+            <div class="card">
+                <h3>Sanjivani Hospital</h3>
+                <p>📞 02185 227888</p>
+                <p>📍 Old Bypass Road, Akluj</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Sanjivani+Hospital+Akluj" target="_blank">
+                   <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+                <h3>LifeCare Hospital</h3>
+                <p>📞 02185 223333</p>
+                <p>📍 Near Bus Stand, Akluj</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=LifeCare+Hospital+Akluj" target="_blank">
+                    <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Metro Health Center</h3>
+                <p>📞 02185 229999</p>
+                <p>📍 New Market, Akluj</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Metro+Health+Center+Akluj" target="_blank">
+                   <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+                <h3>Suryawanshi Hospital</h3>
+                <p>📞 02185 223344</p>
+                <p>📍 Akluj, Maharashtra</p>
+                <a href="https://www.google.com/maps/search/?api=1&query=Suryawanshi+Hospital+Akluj" target="_blank">
+                   <button>View Map</button>
+                </a>
+            </div>
+            <div class="card">
+               <h3>Ashwini Hospital</h3>
+               <p>📞 02185 224466</p>
+               <p>📍 Akluj, Maharashtra</p>
+               <a href="https://www.google.com/maps/search/?api=1&query=Ashwini+Hospital+Akluj" target="_blank">
+                  <button>View Map</button>
+               </a>
+            </div>
+        </div>
+    </div>
+    
+    <a href="Chatbot.html">
+        <div id="chatbot-icon">💬CHATBOT</div>
+    </a>
+    <!--Emergency Button-->
+    <!-- Emergency Button -->
+
+    <a href="EmergencyButton.html">
+        <div id="emergency-btn">
+            🚨
+        </div>
+    </a>
+    <footer>
+    <p>© 2025 Health Hub | Better Care Begins with HealthHub</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Health Records - Health Hub</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#E6F7FF;
+}
+
+/* Header */
+
+.header{
+background:#0077b6;
+color:white;
+text-align:center;
+padding:20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Container */
+
+.container{
+width:90%;
+max-width:1000px;
+margin:30px auto;
+}
+
+/* Cards */
+
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h3{
+color:#023e8a;
+margin-top:0;
+}
+
+/* Patient Info */
+
+.profile-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.info-box{
+background:#f5fbff;
+padding:12px;
+border-radius:8px;
+}
+
+/* Table */
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:12px;
+text-align:center;
+}
+
+th{
+background:#0077b6;
+color:white;
+}
+
+/* Buttons */
+
+.btn-area{
+text-align:center;
+margin-top:20px;
+}
+
+button{
+background:#0077b6;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:8px;
+cursor:pointer;
+margin:5px;
+font-weight:bold;
+}
+
+button:hover{
+background:#023e8a;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>📂 Health Records</h2>
+</div>
+
+<div class="container">
+
+<!-- Patient Profile -->
+
+<div class="card">
+
+<h3>👤 Patient Information</h3>
+
+<div class="profile-grid">
+
+<div class="info-box">
+<b>Name:</b> <span id="name"></span>
+</div>
+
+<div class="info-box">
+<b>Age:</b> 25
+</div>
+
+<div class="info-box">
+<b>Gender:</b> Male
+</div>
+
+<div class="info-box">
+<b>Blood Group:</b> B+
+</div>
+
+<div class="info-box">
+<b>Mobile:</b> 9876543210
+</div>
+
+<div class="info-box">
+<b>Allergies:</b> None
+</div>
+
+</div>
+
+</div>
+
+<!-- Medical History -->
+
+<div class="card">
+
+<h3>🩺 Medical History</h3>
+
+<table>
+
+<tr>
+<th>Date</th>
+<th>Doctor</th>
+<th>Disease</th>
+<th>Prescription</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>12 May 2025</td>
+<td>Dr. Sharma</td>
+<td>Heart Disease</td>
+<td>BP Medicine</td>
+<td>Completed</td>
+</tr>
+
+<tr>
+<td>25 June 2025</td>
+<td>Dr. Patil</td>
+<td>High Blood Pressure</td>
+<td>Regular Checkup</td>
+<td>Completed</td>
+</tr>
+
+<tr>
+<td>10 Aug 2025</td>
+<td>Dr. Kulkarni</td>
+<td>Chest Pain</td>
+<td>ECG Test</td>
+<td>Completed</td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- Reports -->
+
+<div class="card">
+
+<h3>📄 Medical Reports</h3>
+
+<p>✔ Blood Test Report</p>
+<p>✔ ECG Report</p>
+<p>✔ Blood Pressure Report</p>
+
+</div>
+
+<!-- Buttons -->
+
+<div class="btn-area">
+
+<button onclick="downloadReport()">
+⬇ Download Report
+</button>
+
+<button onclick="window.location.href='Patient.html'">
+⬅ Back To Dashboard
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+document.getElementById("name").innerText =
+localStorage.getItem("name") || "Patient";
+
+function downloadReport(){
+
+alert("Report Download Feature will be connected with Servlet Backend.");
+
+}
+
+</script>
+
+</body>
+</html>

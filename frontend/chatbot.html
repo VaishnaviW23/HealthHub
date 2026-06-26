@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Health Hub Chatbot</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#E6F7FF;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:20px;
+}
+
+/* Title */
+
+.page-title{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+color:#023e8a;
+margin-bottom:20px;
+}
+
+/* Chat Container */
+
+.chat-container{
+width:650px;
+max-width:95%;
+background:white;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+overflow:hidden;
+}
+
+/* Header */
+
+.chat-header{
+background:#0077b6;
+color:white;
+padding:15px;
+font-size:20px;
+font-weight:bold;
+display:flex;
+justify-content:space-between;
+}
+
+/* Chat Body */
+
+.chat-body{
+height:450px;
+overflow-y:auto;
+padding:15px;
+background:#f9f9f9;
+}
+
+/* Footer */
+
+.chat-footer{
+display:flex;
+border-top:1px solid #ddd;
+}
+
+.chat-footer input{
+flex:1;
+padding:12px;
+border:none;
+outline:none;
+font-size:15px;
+}
+
+.chat-footer button{
+background:#0077b6;
+color:white;
+border:none;
+padding:12px 20px;
+cursor:pointer;
+}
+
+/* Quick Buttons */
+
+.quick-buttons{
+padding:10px;
+text-align:center;
+background:#f0f8ff;
+}
+
+.quick-buttons button{
+margin:5px;
+padding:8px 12px;
+background:#0077b6;
+color:white;
+border:none;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* Back */
+
+.back{
+text-align:center;
+padding:15px;
+}
+
+.back a{
+text-decoration:none;
+font-weight:bold;
+color:#0077b6;
+}
+
+/* Disclaimer */
+
+.disclaimer{
+text-align:center;
+padding:10px;
+font-size:12px;
+color:gray;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 class="page-title">🤖 Health Hub Chatbot</h1>
+
+<div class="chat-container">
+
+<div class="chat-header">
+<span>Health Assistant</span>
+<span id="count">(0 Queries)</span>
+</div>
+
+<div class="quick-buttons">
+
+<button onclick="quick('fever')">Fever</button>
+<button onclick="quick('cough')">Cough</button>
+<button onclick="quick('headache')">Headache</button>
+<button onclick="quick('chest pain')">Chest Pain</button>
+
+</div>
+
+<div class="chat-body" id="chat-body">
+
+<div style="margin:10px;">
+<span style="background:#E6F7FF;padding:10px;border-radius:10px;">
+👋 Hello! Tell me your symptom and I will suggest something.
+</span>
+</div>
+
+</div>
+
+<div class="chat-footer">
+
+<input type="text"
+id="user-input"
+placeholder="Enter your symptom...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+<div class="back">
+<a href="index.html">⬅ Back To Home</a>
+</div>
+
+<div class="disclaimer">
+⚠ This chatbot provides general health suggestions only and is not a substitute for professional medical advice.
+</div>
+
+</div>
+
+<script>
+
+let count=0;
+
+function quick(symptom){
+
+document.getElementById("user-input").value=symptom;
+sendMessage();
+
+}
+
+function sendMessage(){
+
+let input=document.getElementById("user-input");
+
+let symptom=input.value.toLowerCase().trim();
+
+if(symptom==="") return;
+
+let chat=document.getElementById("chat-body");
+
+count++;
+
+document.getElementById("count").innerText=
+"("+count+" Queries)";
+
+/* User Bubble */
+
+chat.innerHTML +=
+"<div style='text-align:right;margin:10px;'>" +
+"<span style='background:#0077b6;color:white;padding:10px;border-radius:10px;'>"
++ symptom +
+"</span></div>";
+
+let reply="Please consult a doctor for proper diagnosis.";
+
+/* Symptoms */
+
+if(symptom.includes("fever"))
+reply="🤒 Possible viral infection. Drink fluids and rest.";
+
+else if(symptom.includes("cough"))
+reply="😷 Possible throat infection. Drink warm water.";
+
+else if(symptom.includes("cold"))
+reply="🤧 Common cold. Take rest and warm fluids.";
+
+else if(symptom.includes("headache"))
+reply="🤕 This may be due to stress or dehydration.";
+
+else if(symptom.includes("stomach pain"))
+reply="🍽 Possible indigestion. Avoid spicy food.";
+
+else if(symptom.includes("chest pain"))
+reply="🚨 Chest pain can be serious. Seek medical help immediately.";
+
+else if(symptom.includes("vomiting"))
+reply="🤢 Possible food poisoning. Stay hydrated.";
+
+else if(symptom.includes("nausea"))
+reply="🤢 Avoid heavy food and drink water.";
+
+else if(symptom.includes("diarrhea"))
+reply="💧 Drink ORS and stay hydrated.";
+
+else if(symptom.includes("dizziness"))
+reply="🪑 Sit down and drink water.";
+
+else if(symptom.includes("fatigue"))
+reply="😴 Take proper rest and sleep.";
+
+else if(symptom.includes("back pain"))
+reply="🦴 Avoid heavy lifting and rest.";
+
+else if(symptom.includes("joint pain"))
+reply="🦵 Possible arthritis or strain.";
+
+else if(symptom.includes("muscle pain"))
+reply="💪 Apply warm compress and rest.";
+
+else if(symptom.includes("sore throat"))
+reply="☕ Drink warm water and avoid cold drinks.";
+
+else if(symptom.includes("shortness of breath"))
+reply="🚨 Consult doctor immediately.";
+
+else if(symptom.includes("high blood pressure"))
+reply="❤️ Reduce salt intake and monitor BP.";
+
+else if(symptom.includes("low blood pressure"))
+reply="🥤 Drink fluids and rest.";
+
+else if(symptom.includes("skin rash"))
+reply="🩺 Avoid allergens and consult dermatologist.";
+
+else if(symptom.includes("itching"))
+reply="🧴 Avoid scratching and use mild soap.";
+
+else if(symptom.includes("burning urination"))
+reply="🚰 Drink more water and consult doctor.";
+
+else if(symptom.includes("frequent urination"))
+reply="🩺 Possible urinary infection.";
+
+else if(symptom.includes("ear pain"))
+reply="👂 Avoid inserting objects in ear.";
+
+else if(symptom.includes("eye redness"))
+reply="👁 Wash eyes with clean water.";
+
+else if(symptom.includes("blurred vision"))
+reply="👓 Consult an eye specialist.";
+
+else if(symptom.includes("tooth pain"))
+reply="🦷 Consult dentist.";
+
+else if(symptom.includes("gum bleeding"))
+reply="🪥 Maintain oral hygiene.";
+
+else if(symptom.includes("weight loss"))
+reply="⚖ Consult doctor for diagnosis.";
+
+else if(symptom.includes("weight gain"))
+reply="🏃 Exercise and maintain balanced diet.";
+
+else if(symptom.includes("insomnia"))
+reply="🌙 Maintain proper sleep routine.";
+
+else if(symptom.includes("anxiety"))
+reply="🧘 Practice relaxation techniques.";
+
+else if(symptom.includes("heart attack"))
+reply="🚨 EMERGENCY! Call nearest hospital immediately.";
+
+else if(symptom.includes("stroke"))
+reply="🚨 Possible stroke. Seek emergency medical help.";
+
+else if(symptom.includes("unconscious"))
+reply="🚨 Emergency detected. Call ambulance.";
+
+else if(symptom.includes("bleeding"))
+reply="🚨 Apply pressure and seek medical help.";
+
+else if(symptom.includes("accident"))
+reply="🚨 Contact emergency services immediately.";
+
+/* Bot Bubble */
+
+chat.innerHTML +=
+"<div style='text-align:left;margin:10px;'>" +
+"<span style='background:#E6F7FF;padding:10px;border-radius:10px;'>"
++ reply +
+"</span></div>";
+
+chat.scrollTop=chat.scrollHeight;
+
+input.value="";
+
+}
+
+/* Enter Key */
+
+document.getElementById("user-input")
+.addEventListener("keypress",function(event){
+
+if(event.key==="Enter"){
+sendMessage();
+}
+
+});
+
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Dashboard - Health Hub</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+margin:0;
+background:#E6F7FF;
+min-height:100vh;
+}
+
+/* UPDATE: Header */
+
+.header{
+background:#0077b6;
+color:white;
+padding:20px;
+text-align:center;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.header h2{
+margin:5px;
+}
+
+/* UPDATE: Welcome Card */
+
+.welcome-card{
+background:white;
+width:90%;
+max-width:700px;
+margin:20px auto;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+color:#023e8a;
+text-align:center;
+}
+
+/* UPDATE: Dashboard */
+
+.dashboard{
+width:90%;
+max-width:700px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* Cards */
+
+.menu-card{
+background:#0077b6;
+color:white;
+padding:20px;
+border-radius:12px;
+font-size:18px;
+display:flex;
+align-items:center;
+gap:12px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 5px 10px rgba(0,0,0,0.15);
+}
+
+.menu-card:hover{
+background:#023e8a;
+transform:translateY(-3px);
+}
+
+.icon{
+font-size:26px;
+}
+
+/* UPDATE: Logout */
+
+.logout{
+text-align:center;
+margin:20px;
+}
+
+.logout button{
+background:red;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.logout button:hover{
+background:darkred;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Header -->
+
+<div class="header">
+<h2>Patient Dashboard</h2>
+</div>
+
+<!-- Welcome Card -->
+
+<div class="welcome-card">
+
+<h2>Welcome, <span id="name"></span> 👋</h2>
+
+<p><b>Disease:</b> Heart Disease</p>
+
+<p>
+Manage appointments, access health records,
+chat with Health Assistant and get emergency help.
+</p>
+
+</div>
+
+<!-- Dashboard -->
+
+<div class="dashboard">
+
+<div class="menu-card"
+onclick="window.location.href='Profile.html'">
+<span class="icon">👤</span>
+<span>My Profile</span>
+</div>
+
+<div class="menu-card"
+onclick="window.location.href='BookAppointment.html'">
+<span class="icon">📅</span>
+<span>Book Appointment</span>
+</div>
+
+<div class="menu-card"
+onclick="window.location.href='ViewRecords.html'">
+<span class="icon">📂</span>
+<span>View Health Records</span>
+</div>
+
+<div class="menu-card"
+onclick="window.location.href='AppointmentHistory.html'">
+<span class="icon">📋</span>
+<span>Appointment History</span>
+</div>
+
+<div class="menu-card"
+onclick="window.location.href='Chatbot.html'">
+<span class="icon">🤖</span>
+<span>Health Chatbot</span>
+</div>
+
+<div class="menu-card"
+onclick="window.location.href='EmergencyButton.html'">
+<span class="icon">🚨</span>
+<span>Emergency Help</span>
+</div>
+
+</div>
+
+<!-- UPDATE: Logout -->
+
+<div class="logout">
+<button onclick="logout()">Logout</button>
+</div>
+
+<script>
+
+/* UPDATE: Show Login Name */
+
+document.getElementById("name").innerText =
+localStorage.getItem("name") || "Patient";
+
+function logout(){
+
+localStorage.clear();
+
+alert("Logged Out Successfully");
+
+window.location.href="login.html";
+
+}
+
+</script>
+
+</body>
+</html>
+

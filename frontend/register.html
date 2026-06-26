@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register - Health Hub</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#E6F7FF;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    margin:0;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    width:380px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+h2{
+    color:#023e8a;
+    margin-bottom:20px;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#023e8a;
+}
+
+a{
+    color:#0077b6;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* UPDATE: Success Popup */
+
+.popup{
+    display:none;
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#28a745;
+    color:white;
+    padding:15px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.error{
+    color:red;
+    font-size:14px;
+    margin-top:5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="successPopup" class="popup">
+    Registration Successful ✅
+</div>
+
+<div class="container">
+
+<h2>Health Hub Registration</h2>
+
+<form id="registerForm">
+
+    <!-- UPDATE: Role -->
+
+    <select id="role" required>
+        <option value="">Select Role</option>
+        <option>Patient</option>
+        <option>Doctor</option>
+    </select>
+
+    <!-- UPDATE: Full Name -->
+
+    <input type="text"
+           id="fullname"
+           placeholder="Full Name"
+           required>
+
+    <!-- UPDATE: Age -->
+
+    <input type="number"
+           id="age"
+           placeholder="Age"
+           required>
+
+    <!-- UPDATE: Gender -->
+
+    <select id="gender" required>
+        <option value="">Select Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+    </select>
+
+    <!-- UPDATE: Email -->
+
+    <input type="email"
+           id="email"
+           placeholder="Email Address"
+           required>
+
+    <!-- UPDATE: Mobile -->
+
+    <input type="tel"
+           id="mobile"
+           placeholder="Mobile Number"
+           required>
+
+    <!-- UPDATE: Password -->
+
+    <input type="password"
+           id="password"
+           placeholder="Create Password"
+           required>
+
+    <!-- UPDATE: Confirm Password -->
+
+    <input type="password"
+           id="confirmPassword"
+           placeholder="Confirm Password"
+           required>
+
+    <div id="errorMsg" class="error"></div>
+
+    <button type="submit">Register</button>
+
+    <p style="margin-top:15px;">
+        Already have an account?
+        <a href="login.html">Login</a>
+    </p>
+
+</form>
+
+</div>
+
+<script>
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    let password=document.getElementById("password").value;
+    let confirmPassword=document.getElementById("confirmPassword").value;
+
+    if(password!==confirmPassword){
+
+        document.getElementById("errorMsg").innerHTML=
+        "Passwords do not match ❌";
+
+        return;
+    }
+
+    document.getElementById("errorMsg").innerHTML="";
+
+    document.getElementById("successPopup").style.display="block";
+
+    setTimeout(function(){
+
+        window.location.href="login.html";
+
+    },1500);
+
+});
+
+</script>
+
+</body>
+</html>

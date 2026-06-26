@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Health Hub</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    background:#E6F7FF;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* UPDATE: Login Box Improved */
+.login-container{
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    width:350px;
+    text-align:center;
+}
+
+.login-container h2{
+    color:#023e8a;
+    margin-bottom:20px;
+}
+
+select,
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#0077b6;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+}
+
+button:hover{
+    background:#023e8a;
+}
+
+a{
+    color:#0077b6;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* UPDATE: Success Popup */
+
+.popup{
+    display:none;
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#28a745;
+    color:white;
+    padding:15px 25px;
+    border-radius:8px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.footer-links{
+    margin-top:15px;
+}
+
+.footer-links a{
+    margin:0 5px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Success Popup -->
+<div id="successPopup" class="popup">
+    Login Successful ✅
+</div>
+
+<div class="login-container">
+
+    <h2>Health Hub Login</h2>
+
+    <form onsubmit="redirectPage(event)">
+
+        <!-- UPDATE: Admin Added -->
+
+        <select id="role" required>
+            <option value="" disabled selected>Select Role</option>
+            <option value="patient">Patient</option>
+            <option value="doctor">Doctor</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        <input type="text"
+               id="name"
+               placeholder="Enter Name"
+               required>
+
+        <input type="password"
+               id="password"
+               placeholder="Enter Password"
+               required>
+
+        <button type="submit">Login</button>
+
+        <p style="margin-top:15px;">
+            New User?
+            <a href="register.html">Register Here</a>
+        </p>
+
+        <!-- UPDATE: Extra Links -->
+
+        <div class="footer-links">
+            <a href="AboutUs.html">About Us</a> |
+            <a href="ContactUs.html">Contact Us</a>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+
+function redirectPage(event){
+
+    event.preventDefault();
+
+    let role=document.getElementById("role").value;
+    let name=document.getElementById("name").value;
+
+    localStorage.setItem("name",name);
+    localStorage.setItem("role",role);
+
+    document.getElementById("successPopup").style.display="block";
+
+    setTimeout(function(){
+
+        if(role==="patient"){
+            window.location.href="Patient.html";
+        }
+
+        else if(role==="doctor"){
+            window.location.href="Doctor.html";
+        }
+
+        else if(role==="admin"){
+            window.location.href="AdminDashboard.html";
+        }
+
+    },1500);
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset='UTF-8'>
+<title>Manage Patients</title>
+<style>
+body{font-family:Arial;margin:0;background:#E6F7FF}
+nav{background:#0077b6;color:#fff;padding:15px;text-align:center}
+.wrap{width:95%;max-width:1100px;margin:20px auto}
+.card{background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 8px #ccc}
+input{width:98%;padding:10px;margin-bottom:15px}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #ddd;padding:10px;text-align:center}
+th{background:#023e8a;color:#fff}
+button{padding:8px 12px;background:#023e8a;color:#fff;border:none;border-radius:5px;margin:2px}
+</style></head><body>
+<nav><h2>Health Hub - Manage Patients</h2></nav>
+<div class='wrap'><div class='card'>
+<input id='s' onkeyup='f()' placeholder='Search Patient'>
+<table id='t'>
+<tr><th>ID</th><th>Name</th><th>Age</th><th>Disease</th><th>Mobile</th><th>Action</th></tr>
+<tr><td>201</td><td>Rahul Patil</td><td>25</td><td>Heart Disease</td><td>9876543210</td><td><button onclick="alert('View Profile')">View</button><button onclick="alert('Edit Patient')">Edit</button><button onclick="del()">Delete</button></td></tr>
+<tr><td>202</td><td>Priya Sharma</td><td>30</td><td>Diabetes</td><td>9876500001</td><td><button onclick="alert('View Profile')">View</button><button onclick="alert('Edit Patient')">Edit</button><button onclick="del()">Delete</button></td></tr>
+</table><br>
+<button onclick="location.href='AdminDashboard.html'">⬅ Back</button>
+</div></div>
+<script>
+function del(){if(confirm('Delete patient?'))alert('Deleted');}
+function f(){let v=s.value.toUpperCase();let r=t.rows;for(let i=1;i<r.length;i++){r[i].style.display=r[i].cells[1].innerText.toUpperCase().includes(v)?'':'none';}}
+</script>
+</body></html>

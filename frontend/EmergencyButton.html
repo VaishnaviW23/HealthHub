@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Emergency Help</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#66d2f3,#6bd6f4);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+
+.container{
+text-align:center;
+}
+
+button{
+background:rgb(4, 63, 135);
+color:red;
+border:none;
+padding:100px 50px;
+font-size:50px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+button:hover{
+background:#ffe6e6;
+}
+
+#status{
+margin-top:20px;
+font: size 32px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1  style="font-size:60px;">🚨 Emergency Help</h1>
+
+<p  style="font-size:50px;">Click the button to contact nearest hospital</p>
+
+<button onclick="getLocation()">Emergency Call</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+function getLocation(){
+
+let status=document.getElementById("status");
+
+if(navigator.geolocation){
+
+status.innerHTML="Getting your location...";
+
+navigator.geolocation.getCurrentPosition(showPosition);
+
+}
+else{
+
+status.innerHTML="Geolocation not supported";
+
+}
+
+}
+
+function showPosition(position){
+
+let lat=position.coords.latitude;
+let lon=position.coords.longitude;
+
+document.getElementById("status").innerHTML=
+"Location detected. Calling nearest hospital...";
+
+/* Example nearest hospital phone number */
+
+let hospitalNumber="8975814545";
+
+/* Open phone dialer */
+
+window.location.href="tel:"+hospitalNumber;
+
+}
+
+</script>
+
+</body>
+</html>
