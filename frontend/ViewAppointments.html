@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>View Appointments - Health Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#E6F7FF;
+}
+
+/* Header */
+
+.header{
+background:#0077b6;
+color:white;
+padding:20px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+/* Container */
+
+.container{
+width:95%;
+max-width:1200px;
+margin:30px auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,.15);
+}
+
+/* Search */
+
+.search{
+margin-bottom:20px;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+/* Table */
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#0077b6;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+tr:nth-child(even){
+background:#f8f8f8;
+}
+
+/* Buttons */
+
+.btn{
+padding:8px 14px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+color:white;
+font-weight:bold;
+margin:2px;
+}
+
+.view{
+background:#0077b6;
+}
+
+.approve{
+background:green;
+}
+
+.reject{
+background:red;
+}
+
+.btn:hover{
+opacity:.9;
+}
+
+/* Back */
+
+.back{
+text-align:center;
+margin:30px;
+}
+
+.back button{
+padding:12px 25px;
+background:#023e8a;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+.back button:hover{
+background:#012d69;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>📅 View Appointments</h2>
+<p>Health Hub Admin Panel</p>
+</div>
+
+<div class="container">
+
+<div class="search">
+
+<input
+type="text"
+id="searchAppointment"
+placeholder="🔍 Search Patient Name">
+
+</div>
+
+<table id="appointmentTable">
+
+<tr>
+<th>ID</th>
+<th>Patient</th>
+<th>Doctor</th>
+<th>Date</th>
+<th>Time</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>101</td>
+<td>Rahul Patil</td>
+<td>Dr. Sharma</td>
+<td>12/07/2026</td>
+<td>10:00 AM</td>
+<td>Pending</td>
+<td>
+<button class="btn view"
+onclick="viewAppointment('Rahul Patil')">
+View
+</button>
+
+<button class="btn approve"
+onclick="approveAppointment(this)">
+Approve
+</button>
+
+<button class="btn reject"
+onclick="rejectAppointment(this)">
+Reject
+</button>
+</td>
+</tr>
+
+<tr>
+<td>102</td>
+<td>Priya Sharma</td>
+<td>Dr. Patil</td>
+<td>12/07/2026</td>
+<td>11:30 AM</td>
+<td>Pending</td>
+<td>
+<button class="btn view"
+onclick="viewAppointment('Priya Sharma')">
+View
+</button>
+
+<button class="btn approve"
+onclick="approveAppointment(this)">
+Approve
+</button>
+
+<button class="btn reject"
+onclick="rejectAppointment(this)">
+Reject
+</button>
+</td>
+</tr>
+
+<tr>
+<td>103</td>
+<td>Amit Kulkarni</td>
+<td>Dr. Joshi</td>
+<td>13/07/2026</td>
+<td>09:00 AM</td>
+<td>Pending</td>
+<td>
+<button class="btn view"
+onclick="viewAppointment('Amit Kulkarni')">
+View
+</button>
+
+<button class="btn approve"
+onclick="approveAppointment(this)">
+Approve
+</button>
+
+<button class="btn reject"
+onclick="rejectAppointment(this)">
+Reject
+</button>
+</td>
+</tr>
+
+<tr>
+<td>104</td>
+<td>Sneha Patil</td>
+<td>Dr. Kulkarni</td>
+<td>14/07/2026</td>
+<td>02:30 PM</td>
+<td>Pending</td>
+<td>
+<button class="btn view"
+onclick="viewAppointment('Sneha Patil')">
+View
+</button>
+
+<button class="btn approve"
+onclick="approveAppointment(this)">
+Approve
+</button>
+
+<button class="btn reject"
+onclick="rejectAppointment(this)">
+Reject
+</button>
+</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="back">
+
+<button onclick="window.location.href='AdminDashboard.html'">
+
+⬅ Back To Dashboard
+
+</button>
+
+</div>
+
+<script>
+
+function viewAppointment(name){
+
+alert(
+"Appointment Details\n\n"+
+"Patient : "+name+
+"\n\n(Java Servlet + MySQL Backend will fetch complete details.)"
+);
+
+}
+
+function approveAppointment(btn){
+
+alert("Appointment Approved Successfully!");
+
+let row=btn.parentElement.parentElement;
+
+row.cells[5].innerHTML="Approved";
+
+row.cells[5].style.color="green";
+
+}
+
+function rejectAppointment(btn){
+
+alert("Appointment Rejected!");
+
+let row=btn.parentElement.parentElement;
+
+row.cells[5].innerHTML="Rejected";
+
+row.cells[5].style.color="red";
+
+}
+
+document.getElementById("searchAppointment").addEventListener("keyup",function(){
+
+let filter=this.value.toUpperCase();
+
+let table=document.getElementById("appointmentTable");
+
+let tr=table.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let td=tr[i].getElementsByTagName("td")[1];
+
+if(td){
+
+let txt=td.textContent||td.innerText;
+
+tr[i].style.display=
+txt.toUpperCase().indexOf(filter)>-1?"":"none";
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

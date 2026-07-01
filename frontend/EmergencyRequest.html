@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Requests - Health Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#E6F7FF;
+}
+
+/* Header */
+
+.header{
+background:#0077b6;
+color:white;
+text-align:center;
+padding:20px;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.header h2{
+margin-bottom:5px;
+}
+
+/* Statistics */
+
+.stats{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin:30px;
+}
+
+.stat-card{
+background:white;
+width:220px;
+padding:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+.stat-card h2{
+color:#0077b6;
+font-size:34px;
+margin-bottom:10px;
+}
+
+/* Search */
+
+.search{
+width:95%;
+max-width:1100px;
+margin:20px auto;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+/* Table */
+
+.container{
+width:95%;
+max-width:1200px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#0077b6;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+text-align:center;
+border:1px solid #ddd;
+}
+
+tr:nth-child(even){
+background:#f5f5f5;
+}
+
+/* Buttons */
+
+.btn{
+padding:7px 12px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+color:white;
+font-weight:bold;
+margin:2px;
+}
+
+.call{
+background:green;
+}
+
+.map{
+background:#6f42c1;
+}
+
+.accept{
+background:#198754;
+}
+
+.reject{
+background:#dc3545;
+}
+
+.view{
+background:#0d6efd;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>🚨 Emergency Requests</h2>
+
+<p>Health Hub Admin Panel</p>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="stats">
+
+<div class="stat-card">
+<h2>8</h2>
+<p>Total Requests</p>
+</div>
+
+<div class="stat-card">
+<h2>3</h2>
+<p>Pending</p>
+</div>
+
+<div class="stat-card">
+<h2>5</h2>
+<p>Resolved</p>
+</div>
+
+</div>
+
+<!-- Search -->
+
+<div class="search">
+
+<input
+type="text"
+id="searchEmergency"
+placeholder="🔍 Search Patient Name">
+
+</div>
+
+<!-- Table -->
+
+<div class="container">
+
+<table id="emergencyTable">
+
+<tr>
+
+<th>ID</th>
+
+<th>Patient</th>
+
+<th>Location</th>
+
+<th>Contact</th>
+
+<th>Emergency</th>
+
+<th>Priority</th>
+
+<th>Action</th>
+
+</tr>
+
+<tr>
+
+<td>E101</td>
+
+<td>Rahul Patil</td>
+
+<td>Pune</td>
+
+<td>9876543210</td>
+
+<td>Heart Attack</td>
+
+<td style="color:red;"><b>High</b></td>
+
+<td>
+
+<button class="btn view"
+onclick="viewRequest('Rahul Patil')">
+
+View
+
+</button>
+
+<button class="btn accept"
+onclick="acceptRequest(this)">
+
+Accept
+
+</button>
+
+<button class="btn reject"
+onclick="rejectRequest(this)">
+
+Reject
+
+</button>
+
+<button class="btn call"
+onclick="callPatient('9876543210')">
+
+Call
+
+</button>
+
+<button class="btn map"
+onclick="openMap('Pune')">
+
+Map
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>E102</td>
+
+<td>Priya Sharma</td>
+
+<td>Solapur</td>
+
+<td>9876500001</td>
+
+<td>Accident</td>
+
+<td style="color:orange;"><b>Medium</b></td>
+
+<td>
+
+<button class="btn view"
+onclick="viewRequest('Priya Sharma')">
+
+View
+
+</button>
+
+<button class="btn accept"
+onclick="acceptRequest(this)">
+
+Accept
+
+</button>
+
+<button class="btn reject"
+onclick="rejectRequest(this)">
+
+Reject
+
+</button>
+
+<button class="btn call"
+onclick="callPatient('9876500001')">
+
+Call
+
+</button>
+
+<button class="btn map"
+onclick="openMap('Solapur')">
+
+Map
+
+</button>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>E103</td>
+
+<td>Amit Kulkarni</td>
+
+<td>Kolhapur</td>
+
+<td>9876500002</td>
+
+<td>Chest Pain</td>
+
+<td style="color:red;"><b>High</b></td>
+
+<td>
+
+<button class="btn view"
+onclick="viewRequest('Amit Kulkarni')">
+
+View
+
+</button>
+
+<button class="btn accept"
+onclick="acceptRequest(this)">
+
+Accept
+
+</button>
+
+<button class="btn reject"
+onclick="rejectRequest(this)">
+
+Reject
+
+</button>
+
+<button class="btn call"
+onclick="callPatient('9876500002')">
+
+Call
+
+</button>
+
+<button class="btn map"
+onclick="openMap('Kolhapur')">
+
+Map
+
+</button>
+
+</td>
+
+</tr>
+</table>
+
+</div>
+
+<!-- Back Button -->
+
+<div style="text-align:center;margin:30px;">
+
+<button
+style="background:#023e8a;color:white;padding:12px 25px;border:none;border-radius:8px;cursor:pointer;font-size:16px;"
+onclick="window.location.href='AdminDashboard.html'">
+
+⬅ Back To Dashboard
+
+</button>
+
+</div>
+
+<script>
+
+// ================= View =================
+
+function viewRequest(name){
+
+alert(
+
+"Emergency Request\n\n"+
+
+"Patient : "+name+
+
+"\n\nBackend (Java Servlet + MySQL) will fetch complete details."
+
+);
+
+}
+
+// ================= Accept =================
+
+function acceptRequest(btn){
+
+alert("Emergency Request Accepted Successfully.");
+
+btn.innerHTML="Accepted";
+
+btn.style.background="green";
+
+btn.disabled=true;
+
+}
+
+// ================= Reject =================
+
+function rejectRequest(btn){
+
+let ans=confirm("Reject this emergency request?");
+
+if(ans){
+
+alert("Emergency Request Rejected.");
+
+btn.innerHTML="Rejected";
+
+btn.style.background="gray";
+
+btn.disabled=true;
+
+}
+
+}
+
+// ================= Call =================
+
+function callPatient(number){
+
+window.location.href="tel:"+number;
+
+}
+
+// ================= Google Map =================
+
+function openMap(location){
+
+window.open(
+
+"https://www.google.com/maps/search/"+encodeURIComponent(location),
+
+"_blank"
+
+);
+
+}
+
+// ================= Search =================
+
+document.getElementById("searchEmergency").addEventListener("keyup",function(){
+
+let filter=this.value.toUpperCase();
+
+let table=document.getElementById("emergencyTable");
+
+let tr=table.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let td=tr[i].getElementsByTagName("td")[1];
+
+if(td){
+
+let txt=td.textContent || td.innerText;
+
+if(txt.toUpperCase().indexOf(filter)>-1){
+
+tr[i].style.display="";
+
+}
+
+else{
+
+tr[i].style.display="none";
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>

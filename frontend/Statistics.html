@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Health Hub - Reports & Statistics</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#E6F7FF;
+}
+
+/* Header */
+
+.header{
+background:#0077b6;
+color:white;
+padding:20px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.header h2{
+margin-bottom:8px;
+}
+
+/* Statistics Cards */
+
+.container{
+width:90%;
+max-width:1100px;
+margin:40px auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.15);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h1{
+font-size:40px;
+color:#0077b6;
+margin-bottom:10px;
+}
+
+.card h3{
+color:#023e8a;
+margin-bottom:10px;
+}
+
+.card p{
+color:gray;
+}
+
+/* Back Button */
+
+.back{
+text-align:center;
+margin:40px;
+}
+
+.back button{
+background:#023e8a;
+color:white;
+border:none;
+padding:12px 30px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.back button:hover{
+background:#0353b4;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+
+<h2>📊 Reports & Statistics</h2>
+
+<p>Health Hub Admin Analytics</p>
+
+</div>
+
+<div class="container">
+
+<div class="card">
+<h1>25</h1>
+<h3>👨‍⚕ Total Doctors</h3>
+<p>Registered Doctors</p>
+</div>
+
+<div class="card">
+<h1>180</h1>
+<h3>🧑 Total Patients</h3>
+<p>Registered Patients</p>
+</div>
+
+<div class="card">
+<h1>12</h1>
+<h3>🏥 Hospitals</h3>
+<p>Available Hospitals</p>
+</div>
+
+<div class="card">
+<h1>30</h1>
+<h3>📅 Today's Appointments</h3>
+<p>Appointments Today</p>
+</div>
+
+<div class="card">
+<h1>3</h1>
+<h3>🚨 Emergency Requests</h3>
+<p>Pending Emergency Cases</p>
+</div>
+
+<div class="card">
+<h1>21</h1>
+<h3>✅ Available Doctors</h3>
+<p>Doctors On Duty</p>
+</div>
+
+</div>
+
+<div class="back">
+
+<button onclick="window.location.href='AdminDashboard.html'">
+
+⬅ Back To Dashboard
+
+</button>
+
+</div>
+
+</body>
+</html>

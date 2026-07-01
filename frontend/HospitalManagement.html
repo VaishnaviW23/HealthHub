@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Management - Health Hub</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#E6F7FF;
+}
+
+/* Header */
+
+.header{
+background:#0077b6;
+color:white;
+padding:20px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.header h2{
+margin-bottom:5px;
+}
+
+/* Statistics */
+
+.stats{
+display:flex;
+justify-content:center;
+gap:20px;
+margin:30px;
+flex-wrap:wrap;
+}
+
+.stat-card{
+background:white;
+width:220px;
+padding:20px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+
+.stat-card h2{
+color:#0077b6;
+font-size:32px;
+margin-bottom:10px;
+}
+
+/* Form */
+
+.form-container{
+width:95%;
+max-width:1100px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+margin-bottom:30px;
+}
+
+.form-container h2{
+color:#023e8a;
+margin-bottom:20px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+input,select{
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+width:100%;
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.save{
+background:green;
+color:white;
+}
+
+.reset{
+background:red;
+color:white;
+}
+
+/* Search */
+
+.search{
+width:95%;
+max-width:1100px;
+margin:20px auto;
+}
+
+.search input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+/* Table */
+
+.table-container{
+width:95%;
+max-width:1100px;
+margin:auto;
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:#0077b6;
+color:white;
+padding:12px;
+}
+
+td{
+padding:12px;
+border:1px solid #ddd;
+text-align:center;
+}
+
+tr:nth-child(even){
+background:#f5f5f5;
+}
+
+/* Action Buttons */
+
+.btn{
+padding:7px 12px;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+margin:2px;
+}
+
+.view{
+background:#0077b6;
+}
+
+.edit{
+background:orange;
+}
+
+.delete{
+background:red;
+}
+
+.call{
+background:green;
+}
+
+.map{
+background:#6f42c1;
+}
+
+/* Back */
+
+.back{
+text-align:center;
+margin:30px;
+}
+
+.back button{
+background:#023e8a;
+color:white;
+padding:12px 25px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.back button:hover{
+background:#012d69;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h2>🏥 Hospital Management</h2>
+<p>Health Hub Admin Panel</p>
+</div>
+
+<div class="stats">
+
+<div class="stat-card">
+<h2>12</h2>
+<p>Total Hospitals</p>
+</div>
+
+<div class="stat-card">
+<h2>9</h2>
+<p>Active Hospitals</p>
+</div>
+
+<div class="stat-card">
+<h2>3</h2>
+<p>New Hospitals</p>
+</div>
+
+</div>
+
+<div class="form-container">
+
+<h2>Add New Hospital</h2>
+
+<div class="form-grid">
+
+<input type="text" id="hospitalName" placeholder="Hospital Name">
+
+<input type="text" id="city" placeholder="City">
+
+<input type="text" id="contact" placeholder="Contact Number">
+
+<select id="status">
+<option>Available</option>
+<option>Closed</option>
+</select>
+
+</div>
+
+<br>
+
+<button class="save" onclick="saveHospital()">
+Save Hospital
+</button>
+
+<button class="reset" onclick="resetForm()">
+Reset
+</button>
+
+</div>
+
+<div class="search">
+
+<input
+type="text"
+id="searchHospital"
+placeholder="🔍 Search Hospital">
+
+</div>
+
+<div class="table-container">
+
+<table id="hospitalTable">
+
+<tr>
+<th>ID</th>
+<th>Hospital</th>
+<th>City</th>
+<th>Contact</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr>
+<td>H101</td>
+<td>Apex Multispeciality Hospital</td>
+<td>Pune</td>
+<td>9876543210</td>
+<td>Available</td>
+<td>
+<button class="btn view" onclick="viewHospital('Apex Multispeciality Hospital')">View</button>
+<button class="btn edit" onclick="editHospital('Apex Multispeciality Hospital')">Edit</button>
+<button class="btn delete" onclick="deleteHospital()">Delete</button>
+<button class="btn call" onclick="callHospital('9876543210')">Call</button>
+<button class="btn map" onclick="openMap('Apex Multispeciality Hospital Pune')">Map</button>
+</td>
+</tr>
+
+<tr>
+<td>H102</td>
+<td>Omkar Hospital</td>
+<td>Solapur</td>
+<td>9876500001</td>
+<td>Available</td>
+<td>
+<button class="btn view" onclick="viewHospital('Omkar Hospital')">View</button>
+<button class="btn edit" onclick="editHospital('Omkar Hospital')">Edit</button>
+<button class="btn delete" onclick="deleteHospital()">Delete</button>
+<button class="btn call" onclick="callHospital('9876500001')">Call</button>
+<button class="btn map" onclick="openMap('Omkar Hospital Solapur')">Map</button>
+</td>
+</tr>
+
+<tr>
+<td>H103</td>
+<td>City Care Hospital</td>
+<td>Kolhapur</td>
+<td>9876500002</td>
+<td>Closed</td>
+<td>
+<button class="btn view" onclick="viewHospital('City Care Hospital')">View</button>
+<button class="btn edit" onclick="editHospital('City Care Hospital')">Edit</button>
+<button class="btn delete" onclick="deleteHospital()">Delete</button>
+<button class="btn call" onclick="callHospital('9876500002')">Call</button>
+<button class="btn map" onclick="openMap('City Care Hospital Kolhapur')">Map</button>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div class="back">
+
+<button onclick="window.location.href='AdminDashboard.html'">
+
+⬅ Back To Dashboard
+
+</button>
+
+</div>
+
+<script>
+
+// ================= Save Hospital =================
+
+function saveHospital(){
+
+alert("Hospital Added Successfully!");
+
+// Java Servlet + MySQL Backend Integration Here
+
+}
+
+// ================= Reset =================
+
+function resetForm(){
+
+document.getElementById("hospitalName").value="";
+document.getElementById("city").value="";
+document.getElementById("contact").value="";
+document.getElementById("status").selectedIndex=0;
+
+}
+
+// ================= View =================
+
+function viewHospital(name){
+
+alert(
+"Hospital Details\n\n"+
+"Hospital Name : "+name+
+"\n\n(Java Servlet + MySQL Backend will fetch complete details.)"
+);
+
+}
+
+// ================= Edit =================
+
+function editHospital(name){
+
+alert("Edit Hospital : "+name);
+
+}
+
+// ================= Delete =================
+
+function deleteHospital(){
+
+let ans=confirm("Are you sure you want to delete this hospital?");
+
+if(ans){
+
+alert("Hospital Deleted Successfully!");
+
+}
+
+}
+
+// ================= Call =================
+
+function callHospital(number){
+
+window.location.href="tel:"+number;
+
+}
+
+// ================= Google Map =================
+
+function openMap(place){
+
+window.open(
+"https://www.google.com/maps/search/"+encodeURIComponent(place),
+"_blank"
+);
+
+}
+
+// ================= Search =================
+
+document.getElementById("searchHospital").addEventListener("keyup",function(){
+
+let filter=this.value.toUpperCase();
+
+let table=document.getElementById("hospitalTable");
+
+let tr=table.getElementsByTagName("tr");
+
+for(let i=1;i<tr.length;i++){
+
+let td=tr[i].getElementsByTagName("td")[1];
+
+if(td){
+
+let txt=td.textContent || td.innerText;
+
+if(txt.toUpperCase().indexOf(filter)>-1){
+
+tr[i].style.display="";
+
+}
+
+else{
+
+tr[i].style.display="none";
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
